@@ -1,4 +1,5 @@
-import { CATS, TEACHERS } from "../data/mockData";
+import { CATS } from "../data/cats";
+import { TEACHERS } from "../data/teachers";
 
 export default function Percorsi({ goCal }) {
   return (

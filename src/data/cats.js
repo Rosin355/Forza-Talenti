@@ -1,0 +1,18 @@
+export const CATS = {
+  meditazione: { label: "Meditazione", color: "#8B5CF6", soft: "#F3EEFE",
+    desc: "Sedute guidate al mattino e alla sera per ritrovare silenzio e chiarezza. Dal primo respiro consapevole alle pratiche profonde." },
+  movimento: { label: "Movimento", color: "#F97316", soft: "#FEF1E7",
+    desc: "Il corpo come strumento di ascolto: sequenze dolci, risveglio muscolare e pratiche in giardino quando il tempo lo permette." },
+  crescita: { label: "Crescita personale", color: "#D9269B", soft: "#FCEAF5",
+    desc: "Percorsi tematici in piccolo gruppo per lavorare su scelte, relazioni e obiettivi. Si cresce meglio in un cerchio." },
+  mindfulness: { label: "Mindfulness", color: "#0EA5B7", soft: "#E6F7F9",
+    desc: "Protocolli di consapevolezza per la vita di ogni giorno: gestione dello stress, pause mindful in pausa pranzo, respiro." },
+  cyl: { label: "CYLAcademy", color: "#3B82F6", soft: "#EAF2FE",
+    desc: "Il percorso formativo dell'associazione: moduli progressivi per chi vuole approfondire e, un giorno, condurre." },
+  kids: { label: "Kids", color: "#D9A400", soft: "#FBF4DC",
+    desc: "Yoga e giochi di consapevolezza per bambini dai 4 ai 12 anni. Piccoli gruppi, grande energia, merenda inclusa." },
+  eventi: { label: "Eventi", color: "#F43F5E", soft: "#FEECEF",
+    desc: "Cerchi di luna, serate a tema, incontri con ospiti. I momenti in cui tutta la comunità si ritrova." },
+  workshop: { label: "Workshop & Stage", color: "#22A05A", soft: "#E9F7EF",
+    desc: "Intensivi di mezza o intera giornata: scrittura intuitiva, voce, presenza scenica. Posti limitati, esperienza piena." },
+};

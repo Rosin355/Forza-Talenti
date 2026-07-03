@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import TalentRing from "./TalentRing";
-import { CATS, DAYS, LESSONS } from "../data/mockData";
+import { CATS } from "../data/cats";
+import { DAYS } from "../data/days";
+import { LESSONS } from "../data/lessons";
 
-export default function Tessera({ myLessons, waitlist, onCancel, setTab }) {
+export default function Tessera({ myLessons, waitlist, onCancel }) {
+  const navigate = useNavigate();
   return (
     <main>
       <section className="lfdt-section">
@@ -25,7 +29,7 @@ export default function Tessera({ myLessons, waitlist, onCancel, setTab }) {
             <div className="lfdt-panel">
               <h3>Il tuo abbonamento</h3>
               <p><strong>Trimestrale</strong> · attivo fino al 31/08/2026 · rinnovo non automatico</p>
-              <button className="lfdt-btn ghost small" onClick={() => setTab("piani")}>Rinnova o cambia piano</button>
+              <button className="lfdt-btn ghost small" onClick={() => navigate("/piani")}>Rinnova o cambia piano</button>
             </div>
             <div className="lfdt-panel">
               <h3>Le tue prenotazioni</h3>

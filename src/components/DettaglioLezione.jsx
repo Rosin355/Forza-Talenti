@@ -1,5 +1,6 @@
 import Badge from "./Badge";
-import { CATS, DAYS } from "../data/mockData";
+import { CATS } from "../data/cats";
+import { DAYS } from "../data/days";
 
 export default function DettaglioLezione({ open, booked, waitlist, isFull, spotsLeft, onBook, onCancel, onJoinWait, onClose }) {
   return (

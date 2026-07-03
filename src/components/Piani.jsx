@@ -1,4 +1,4 @@
-import { PLANS } from "../data/mockData";
+import { PLANS } from "../data/plans";
 
 export default function Piani({ coupon, setCoupon, couponOk, applyCoupon, say }) {
   return (

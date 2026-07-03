@@ -1,6 +1,6 @@
-import { RAINBOW } from "../data/mockData";
+const RAINBOW = ["#F43F5E", "#F97316", "#FACC15", "#22C55E", "#06B6D4", "#3B82F6", "#8B5CF6", "#D9269B"];
 
-/* ---------- anello del brand (richiama il logo) ---------- */
+/* ---------- anello decorativo (richiama il logo) ---------- */
 export default function TalentRing({ size = 120, spin = true }) {
   const r = size / 2 - size * 0.13;
   const c = size / 2;

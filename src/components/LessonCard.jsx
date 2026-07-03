@@ -1,5 +1,5 @@
 import Badge from "./Badge";
-import { CATS } from "../data/mockData";
+import { CATS } from "../data/cats";
 
 /* ---------- card lezione ---------- */
 export default function LessonCard({ l, booked, waitlist, isFull, spotsLeft, onOpen }) {

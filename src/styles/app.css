@@ -14,10 +14,12 @@
   gap:16px; padding:14px clamp(16px,4vw,40px); background:rgba(253,252,250,.92); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line); flex-wrap:wrap}
 .lfdt-brand{display:flex; align-items:center; gap:12px; cursor:pointer}
+.lfdt-logo{object-fit:cover; object-position:left; display:block; flex-shrink:0}
 .lfdt-brandname{font-family:'Fraunces',serif; font-weight:560; font-size:17px; letter-spacing:.01em}
 .lfdt-brandsub{font-size:11.5px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase}
 .lfdt-nav{display:flex; gap:4px; flex-wrap:wrap}
-.lfdt-navbtn{padding:8px 14px; border-radius:999px; font-weight:500; color:var(--muted); transition:.18s}
+.lfdt-navbtn{padding:8px 14px; border-radius:999px; font-weight:500; color:var(--muted); transition:.18s;
+  text-decoration:none; display:inline-block}
 .lfdt-navbtn.on{background:var(--ink); color:#fff}
 .lfdt-navbtn:hover:not(.on){background:#F1EEE8; color:var(--ink)}
 
