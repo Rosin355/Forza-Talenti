@@ -235,3 +235,29 @@
 .lfdt-flink:hover{color:#3B82F6}
 .lfdt-footer-bottom{max-width:1080px; margin:0 auto; padding:14px clamp(16px,4vw,40px) 26px;
   font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+
+/* percorso — dettaglio */
+.lfdt-phero{position:relative; overflow:hidden; border-radius:22px; background:var(--c);
+  min-height:clamp(220px,34vw,340px); display:flex; box-shadow:0 16px 40px rgba(43,39,51,.14)}
+.lfdt-phero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+.lfdt-phero-overlay{position:relative; z-index:1; margin-top:auto; width:100%; color:#fff;
+  padding:clamp(20px,3vw,34px); background:linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0) 72%)}
+.lfdt-phero-eyebrow{font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; opacity:.85; margin-bottom:10px}
+.lfdt-phero-overlay h1{font-family:'Fraunces',serif; font-weight:560; font-size:clamp(30px,4.4vw,46px); line-height:1.05}
+.lfdt-phero-meta{margin-top:12px; font-weight:700; font-size:14px; opacity:.92}
+
+.lfdt-prose{max-width:64ch}
+.lfdt-lead{font-family:'Fraunces',serif; font-weight:460; font-size:clamp(18px,2.2vw,22px); line-height:1.5; margin-bottom:16px}
+.lfdt-prose-p{color:var(--muted); font-size:15.5px; line-height:1.6; margin-bottom:14px}
+
+.lfdt-info{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px}
+.lfdt-info-item{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--c);
+  border-radius:16px; padding:18px 20px}
+.lfdt-info-label{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:700;
+  color:var(--muted); margin-bottom:8px}
+.lfdt-info-item p{font-size:14.5px; line-height:1.5}
+
+.lfdt-cta{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  background:var(--s); border-radius:22px; padding:clamp(22px,3vw,32px)}
+.lfdt-cta h3{font-family:'Fraunces',serif; font-weight:560; font-size:clamp(20px,2.4vw,24px); margin-bottom:6px}
+.lfdt-cta p{color:var(--muted); font-size:14.5px; line-height:1.5; max-width:52ch}

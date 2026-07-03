@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { CATS } from "../data/cats";
 import { TEACHERS } from "../data/teachers";
 
-export default function Percorsi({ goCal }) {
+export default function Percorsi() {
+  const navigate = useNavigate();
   return (
     <main>
       <section className="lfdt-section">
@@ -19,7 +21,7 @@ export default function Percorsi({ goCal }) {
                 <h3>{c.label}</h3>
               </div>
               <p>{c.desc}</p>
-              <button className="lfdt-link" onClick={() => goCal(k)}>Vedi nel calendario →</button>
+              <button className="lfdt-link" onClick={() => navigate(`/percorsi/${k}`)}>Scopri il percorso →</button>
             </div>
           ))}
         </div>

@@ -92,7 +92,7 @@ export default function App() {
           <Home goCal={goCal} {...lessonProps}
             stars={stars} setStars={setStars} surveySent={surveySent} sendSurvey={sendSurvey} />
         } />
-        <Route path="/percorsi" element={<Percorsi goCal={goCal} />} />
+        <Route path="/percorsi" element={<Percorsi />} />
         <Route path="/percorsi/:slug" element={<PercorsoDettaglio goCal={goCal} {...lessonProps} />} />
         <Route path="/calendario" element={
           <Calendario day={day} setDay={setDay} catFilter={catFilter} setCatFilter={setCatFilter}

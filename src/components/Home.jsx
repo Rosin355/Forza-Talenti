@@ -57,7 +57,7 @@ export default function Home({ goCal, booked, waitlist, isFull, spotsLeft, setOp
         <div className="lfdt-cats">
           {Object.entries(CATS).map(([k, c]) => (
             <button key={k} className="lfdt-cat" style={{ "--c": c.color, "--s": c.soft }}
-              onClick={() => goCal(k)}>
+              onClick={() => navigate(`/percorsi/${k}`)}>
               <span className="lfdt-cat-dot" />
               <span className="lfdt-cat-name">{c.label}</span>
               <span className="lfdt-cat-arrow">→</span>
