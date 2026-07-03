@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Hero from "./Hero";
 import Badge from "./Badge";
@@ -5,11 +6,20 @@ import LessonCard from "./LessonCard";
 import { CATS } from "../data/cats";
 import { LESSONS } from "../data/lessons";
 import { QUOTES } from "../data/quotes";
+import { useDemo } from "../store/demoStore";
 
-export default function Home({ goCal, booked, waitlist, isFull, spotsLeft, setOpen,
-  stars, setStars, surveySent, sendSurvey }) {
+export default function Home() {
   const navigate = useNavigate();
+  const { goCal, openSheet, say } = useDemo();
+  const [stars, setStars] = useState(0);
+  const [surveySent, setSurveySent] = useState(false);
   const fullMoon = LESSONS.find((l) => l.id === 12);
+
+  const sendSurvey = () => {
+    if (!stars) { say("Scegli da 1 a 5 stelle per inviare la tua valutazione."); return; }
+    setSurveySent(true);
+    say("Grazie! La tua opinione aiuta tutto il cerchio a migliorare.");
+  };
 
   return (
     <main>
@@ -40,7 +50,7 @@ export default function Home({ goCal, booked, waitlist, isFull, spotsLeft, setOp
       {/* evento in evidenza */}
       <section className="lfdt-section">
         <div className="lfdt-event" role="button" tabIndex={0}
-          onClick={() => setOpen(fullMoon)} onKeyDown={(e) => e.key === "Enter" && setOpen(fullMoon)}>
+          onClick={() => openSheet(fullMoon)} onKeyDown={(e) => e.key === "Enter" && openSheet(fullMoon)}>
           <div className="lfdt-event-moon" aria-hidden="true" />
           <div className="lfdt-event-body">
             <Badge color="#F43F5E" soft="#3d2430">Evento della settimana</Badge>
@@ -113,8 +123,7 @@ export default function Home({ goCal, booked, waitlist, isFull, spotsLeft, setOp
         </div>
         <div className="lfdt-lessons">
           {[LESSONS.find(l => l.id === 12), LESSONS.find(l => l.id === 14), LESSONS.find(l => l.id === 7)].map((l) => (
-            <LessonCard key={l.id} l={l} booked={booked} waitlist={waitlist}
-              isFull={isFull} spotsLeft={spotsLeft} onOpen={() => setOpen(l)} />
+            <LessonCard key={l.id} l={l} />
           ))}
         </div>
       </section>

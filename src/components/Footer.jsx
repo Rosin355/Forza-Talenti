@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useDemo } from "../store/demoStore";
 
-export default function Footer({ goCal, say }) {
+export default function Footer() {
   const navigate = useNavigate();
+  const { goCal, say, resetDemo } = useDemo();
   return (
     <footer className="lfdt-footer">
       <div className="lfdt-footer-top">
@@ -35,6 +37,8 @@ export default function Footer({ goCal, say }) {
       </div>
       <div className="lfdt-footer-bottom">
         <span>© 2026 La Forza Dei Talenti APS · demo non collegata a dati reali</span>
+        <button className="lfdt-reset" onClick={resetDemo}
+          aria-label="Reimposta la demo ai valori iniziali" title="Reset demo">Reset demo</button>
       </div>
     </footer>
   );

@@ -261,3 +261,81 @@
   background:var(--s); border-radius:22px; padding:clamp(22px,3vw,32px)}
 .lfdt-cta h3{font-family:'Fraunces',serif; font-weight:560; font-size:clamp(20px,2.4vw,24px); margin-bottom:6px}
 .lfdt-cta p{color:var(--muted); font-size:14.5px; line-height:1.5; max-width:52ch}
+
+/* conferma inline (ConfirmButton) */
+.lfdt-confirm{display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap}
+.lfdt-confirm-q{font-size:13.5px; font-weight:700; color:var(--ink)}
+.lfdt-link.muted{color:var(--muted)}
+
+/* reset demo — discreto nel footer */
+.lfdt-footer-bottom{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.lfdt-reset{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); opacity:.35;
+  padding:4px 8px; border-radius:999px; transition:.18s}
+.lfdt-reset:hover{opacity:1; background:#F1EEE8; color:var(--ink)}
+
+/* checkout — stepper */
+.lfdt-steps-nav{display:flex; gap:8px; list-style:none; padding:0; margin:0 0 22px; flex-wrap:wrap}
+.lfdt-step-item{display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:var(--muted)}
+.lfdt-step-item:not(:last-child)::after{content:""; width:26px; height:1px; background:var(--line); margin-left:2px}
+.lfdt-step-item.on{color:var(--ink)}
+.lfdt-step-item.done{color:#22A05A}
+.lfdt-step-dot{display:grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px;
+  border:1.5px solid var(--line); background:#fff}
+.lfdt-step-item.on .lfdt-step-dot{background:var(--ink); color:#fff; border-color:var(--ink)}
+.lfdt-step-item.done .lfdt-step-dot{background:#22A05A; color:#fff; border-color:#22A05A}
+
+/* checkout — layout */
+.lfdt-checkout-grid{display:grid; grid-template-columns:1fr minmax(260px,340px); gap:16px; align-items:start}
+@media (max-width:760px){.lfdt-checkout-grid{grid-template-columns:1fr}}
+.lfdt-checkout-narrow{max-width:520px}
+.lfdt-checkout-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:16px; flex-wrap:wrap}
+.lfdt-checkout-actions.center{justify-content:center}
+
+.lfdt-order-item{display:flex; align-items:center; gap:12px; padding-top:6px}
+.lfdt-order-item .grow{flex:1}
+.lfdt-order-price{font-family:'Fraunces',serif; font-weight:560; font-size:20px}
+
+.lfdt-totals{position:sticky; top:84px}
+.lfdt-total-row{display:flex; justify-content:space-between; gap:12px; font-size:14.5px; padding:7px 0}
+.lfdt-total-row.disc{color:#22A05A}
+.lfdt-total-row.grand{border-top:1px solid var(--line); margin-top:4px; padding-top:12px;
+  font-family:'Fraunces',serif; font-weight:560; font-size:19px}
+.lfdt-totals .lfdt-btn{margin-top:14px}
+
+/* checkout — form */
+.lfdt-field{display:block; margin-top:14px}
+.lfdt-field span{display:block; font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:6px}
+.lfdt-field input{width:100%; padding:11px 15px; border:1.5px solid var(--line); border-radius:12px; font:inherit; background:#fff}
+.lfdt-field input:focus{outline:none; border-color:#8B5CF6}
+.lfdt-field input[aria-invalid="true"]{border-color:#F43F5E}
+.lfdt-field-row{display:flex; gap:12px}
+.lfdt-field-row .lfdt-field{flex:1}
+.lfdt-field-hint{margin-top:12px; font-size:13px; color:var(--muted); line-height:1.5}
+
+.lfdt-card-form{margin-top:16px}
+.lfdt-demo-warn{background:#FEF1E7; border:1px solid #F9731633; color:#9A4A12; border-radius:12px;
+  padding:11px 14px; font-size:13.5px; line-height:1.45; margin-bottom:6px}
+
+/* checkout — metodo */
+.lfdt-methods{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+.lfdt-method{padding:10px 18px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+  font-weight:700; font-size:14px; color:var(--muted); transition:.15s}
+.lfdt-method.on{border-color:var(--ink); background:var(--ink); color:#fff}
+.lfdt-method-note{margin-top:14px; font-size:14px}
+
+/* checkout — successo */
+.lfdt-success{max-width:520px; margin:0 auto; text-align:center}
+.lfdt-success h3{font-family:'Fraunces',serif; font-weight:560; font-size:clamp(22px,3vw,28px); margin:6px 0 8px}
+.lfdt-check{width:72px; height:72px; margin:6px auto 6px; border-radius:50%; background:#E9F7EF; color:#22A05A;
+  display:grid; place-items:center; font-size:34px; font-weight:700; animation:lfdt-pop .4s ease-out}
+@keyframes lfdt-pop{0%{transform:scale(.5); opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1); opacity:1}}
+@media (prefers-reduced-motion:reduce){.lfdt-check{animation:none}}
+
+.lfdt-receipt{text-align:left; background:var(--card); border:1px solid var(--line); border-radius:18px;
+  padding:20px; margin:20px 0}
+.lfdt-receipt-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  padding-bottom:12px; margin-bottom:6px; border-bottom:1px dashed var(--line)}
+.lfdt-receipt-head strong{font-family:'Fraunces',serif; font-weight:560; font-size:17px}
+.lfdt-receipt-head span{font-size:12.5px; color:var(--muted)}
+
+.lfdt-tessera-mini{max-width:360px; margin:20px auto 0; aspect-ratio:1.75; text-align:left}

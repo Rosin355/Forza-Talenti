@@ -4,10 +4,12 @@ import { CATS } from "../data/cats";
 import { LESSONS } from "../data/lessons";
 import { TEACHERS } from "../data/teachers";
 import { heroFor } from "../assets/percorsi/heroes";
+import { useDemo } from "../store/demoStore";
 
-export default function PercorsoDettaglio({ goCal, booked, waitlist, isFull, spotsLeft, setOpen }) {
+export default function PercorsoDettaglio() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { goCal } = useDemo();
   const cat = CATS[slug];
   if (!cat) return <Navigate to="/percorsi" replace />;
 
@@ -83,8 +85,7 @@ export default function PercorsoDettaglio({ goCal, booked, waitlist, isFull, spo
             <div className="lfdt-empty">Nessuna lezione di {cat.label} in programma questa settimana.</div>
           )}
           {lessons.map((l) => (
-            <LessonCard key={l.id} l={l} booked={booked} waitlist={waitlist}
-              isFull={isFull} spotsLeft={spotsLeft} onOpen={() => setOpen(l)} />
+            <LessonCard key={l.id} l={l} />
           ))}
         </div>
       </section>

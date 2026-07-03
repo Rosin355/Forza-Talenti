@@ -1,11 +1,17 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import TalentRing from "./TalentRing";
+import ConfirmButton from "./ConfirmButton";
 import { CATS } from "../data/cats";
 import { DAYS } from "../data/days";
 import { LESSONS } from "../data/lessons";
+import { useDemo } from "../store/demoStore";
 
-export default function Tessera({ myLessons, waitlist, onCancel }) {
+export default function Tessera() {
   const navigate = useNavigate();
+  const { member, subscription, booked, waitlist, cancel } = useDemo();
+  const myLessons = useMemo(() => LESSONS.filter((l) => booked.includes(l.id)), [booked]);
+
   return (
     <main>
       <section className="lfdt-section">
@@ -15,21 +21,27 @@ export default function Tessera({ myLessons, waitlist, onCancel }) {
             <div className="lfdt-tessera-arc" aria-hidden="true" />
             <div className="lfdt-tessera-top">
               <TalentRing size={44} spin={false} />
-              <span className="lfdt-tessera-type">Socio ordinario</span>
+              <span className="lfdt-tessera-type">{member.type}</span>
             </div>
-            <div className="lfdt-tessera-name">Aurora Talenti</div>
+            <div className="lfdt-tessera-name">{member.name}</div>
             <div className="lfdt-tessera-meta">
-              <div><span>Tessera n.</span><strong>26/142</strong></div>
-              <div><span>Emessa</span><strong>15/03/2026</strong></div>
-              <div><span>Valida fino</span><strong>14/03/2027</strong></div>
+              <div><span>Tessera n.</span><strong>{member.cardNo}</strong></div>
+              <div><span>Emessa</span><strong>{member.issued}</strong></div>
+              <div><span>Valida fino</span><strong>{member.validUntil}</strong></div>
             </div>
           </div>
 
           <div className="lfdt-stack">
             <div className="lfdt-panel">
               <h3>Il tuo abbonamento</h3>
-              <p><strong>Trimestrale</strong> · attivo fino al 31/08/2026 · rinnovo non automatico</p>
-              <button className="lfdt-btn ghost small" onClick={() => navigate("/piani")}>Rinnova o cambia piano</button>
+              {subscription ? (
+                <p><strong>{subscription.planName}</strong> · attivo fino al {subscription.activeUntil} · rinnovo non automatico</p>
+              ) : (
+                <p className="lfdt-muted">Nessun abbonamento attivo al momento.</p>
+              )}
+              <button className="lfdt-btn ghost small" onClick={() => navigate("/piani")}>
+                {subscription ? "Rinnova o cambia piano" : "Attiva un abbonamento"}
+              </button>
             </div>
             <div className="lfdt-panel">
               <h3>Le tue prenotazioni</h3>
@@ -41,7 +53,9 @@ export default function Tessera({ myLessons, waitlist, onCancel }) {
                     <strong>{l.title}</strong>
                     <div className="lfdt-muted">{DAYS[l.day].short} {DAYS[l.day].num} luglio · {l.time} · {l.room}</div>
                   </div>
-                  <button className="lfdt-link danger" onClick={() => onCancel(l)}>Disdici</button>
+                  <ConfirmButton question="Disdici?" confirmLabel="Sì, disdici" onConfirm={() => cancel(l)}>
+                    Disdici
+                  </ConfirmButton>
                 </div>
               ))}
               {waitlist.length > 0 && (

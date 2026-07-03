@@ -1,6 +1,20 @@
+import { useState } from "react";
 import { PLANS } from "../data/plans";
+import { useDemo, couponInfo } from "../store/demoStore";
 
-export default function Piani({ coupon, setCoupon, couponOk, applyCoupon, say }) {
+export default function Piani() {
+  const { startCheckout, say } = useDemo();
+  const [coupon, setCoupon] = useState("");
+  const [couponOk, setCouponOk] = useState(false);
+
+  const applyCoupon = () => {
+    if (couponInfo(coupon).ok) { setCouponOk(true); say("Coupon applicato: −10% sugli abbonamenti."); }
+    else say("Codice non riconosciuto. Controlla il coupon e riprova.");
+  };
+
+  const choose = (p) =>
+    startCheckout({ kind: "plan", id: p.id, name: p.name, price: Number(p.price), sub: p.sub });
+
   return (
     <main>
       <section className="lfdt-section">
@@ -20,7 +34,7 @@ export default function Piani({ coupon, setCoupon, couponOk, applyCoupon, say })
                 <span className="per">{p.per}</span>
               </div>
               <p className="lfdt-plan-note">{p.note}</p>
-              <button className="lfdt-btn primary full" onClick={() => say("Demo: il pagamento verrà attivato nella versione finale (Stripe / Satispay / in sede).")}>
+              <button className="lfdt-btn primary full" onClick={() => choose(p)}>
                 Scegli {p.name}
               </button>
             </div>

@@ -1,9 +1,19 @@
+import { useMemo } from "react";
 import LessonCard from "./LessonCard";
 import { CATS } from "../data/cats";
 import { DAYS } from "../data/days";
+import { LESSONS } from "../data/lessons";
+import { useDemo } from "../store/demoStore";
 
-export default function Calendario({ day, setDay, catFilter, setCatFilter, dayLessons,
-  weekCount, maxWeek, booked, waitlist, isFull, spotsLeft, setOpen }) {
+export default function Calendario() {
+  const { day, setDay, catFilter, setCatFilter, weekCount, maxWeek } = useDemo();
+
+  const dayLessons = useMemo(
+    () => LESSONS.filter((l) => l.day === day && (catFilter === "all" || l.cat === catFilter))
+      .sort((a, b) => a.time.localeCompare(b.time)),
+    [day, catFilter]
+  );
+
   return (
     <main>
       <section className="lfdt-section">
@@ -35,8 +45,7 @@ export default function Calendario({ day, setDay, catFilter, setCatFilter, dayLe
               Prova un altro giorno o togli il filtro.</div>
           )}
           {dayLessons.map((l) => (
-            <LessonCard key={l.id} l={l} booked={booked} waitlist={waitlist}
-              isFull={isFull} spotsLeft={spotsLeft} onOpen={() => setOpen(l)} />
+            <LessonCard key={l.id} l={l} />
           ))}
         </div>
         <p className="lfdt-rules">Puoi prenotare fino a 2 lezioni a settimana e fino a 12 ore prima dell'inizio.
