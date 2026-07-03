@@ -41,6 +41,7 @@ export function DemoProvider({ children }) {
   const [openLesson, setOpenLesson] = useState(null);
   const [day, setDay] = useState(0);
   const [catFilter, setCatFilter] = useState("all");
+  const [adminAuthed, setAdminAuthed] = useState(false);
   const toastTimer = useRef(null);
 
   useEffect(() => {
@@ -132,8 +133,16 @@ export function DemoProvider({ children }) {
     setOpenLesson(null);
     setDay(0);
     setCatFilter("all");
+    setAdminAuthed(false);
     say("Demo reimpostata ai valori iniziali.");
   };
+
+  const login = (email, pwd) => {
+    const ok = email.trim().toLowerCase() === "admin@lfdt.demo" && pwd === "demo2026";
+    if (ok) setAdminAuthed(true);
+    return ok;
+  };
+  const logout = () => setAdminAuthed(false);
 
   const value = {
     ...state,
@@ -145,6 +154,7 @@ export function DemoProvider({ children }) {
     spotsLeft, isFull, book, cancel, joinWait,
     goCal, startCheckout, clearCart, completeOrder, resetDemo,
     couponInfo,
+    adminAuthed, login, logout,
   };
   return <DemoContext.Provider value={value}>{children}</DemoContext.Provider>;
 }

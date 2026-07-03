@@ -1,5 +1,6 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import PublicLayout from "./components/PublicLayout";
 import Home from "./components/Home";
 import Percorsi from "./components/Percorsi";
 import PercorsoDettaglio from "./components/PercorsoDettaglio";
@@ -7,24 +8,22 @@ import Calendario from "./components/Calendario";
 import Tessera from "./components/Tessera";
 import Piani from "./components/Piani";
 import Checkout from "./components/Checkout";
-import Placeholder from "./components/Placeholder";
-import DettaglioLezione from "./components/DettaglioLezione";
-import Toast from "./components/Toast";
-import Footer from "./components/Footer";
 import "./styles/app.css";
+
+/* L'area admin (con recharts) è caricata solo quando si apre /admin,
+   così il sito pubblico resta leggero. */
+const Admin = lazy(() => import("./admin/Admin"));
 
 /* ============================================================
    LA FORZA DEI TALENTI — demo web app (mockup, dati finti)
-   Stato globale (prenotazioni, tessera, abbonamento, carrello)
-   in DemoContext, persistito in localStorage.
+   Stato globale (prenotazioni, tessera, abbonamento, carrello,
+   login admin) in DemoContext. Sito pubblico + area /admin.
    ============================================================ */
 
 export default function App() {
   return (
-    <div className="lfdt-root">
-      <Header />
-
-      <Routes>
+    <Routes>
+      <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/percorsi" element={<Percorsi />} />
         <Route path="/percorsi/:slug" element={<PercorsoDettaglio />} />
@@ -32,13 +31,13 @@ export default function App() {
         <Route path="/tessera" element={<Tessera />} />
         <Route path="/piani" element={<Piani />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/admin" element={<Placeholder title="Area amministrazione" />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-
-      <DettaglioLezione />
-      <Toast />
-      <Footer />
-    </div>
+      </Route>
+      <Route path="/admin/*" element={
+        <Suspense fallback={<div className="lfdt-admin-auth"><p className="lfdt-admin-muted">Carico il gestionale…</p></div>}>
+          <Admin />
+        </Suspense>
+      } />
+    </Routes>
   );
 }

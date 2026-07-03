@@ -339,3 +339,144 @@
 .lfdt-receipt-head span{font-size:12.5px; color:var(--muted)}
 
 .lfdt-tessera-mini{max-width:360px; margin:20px auto 0; aspect-ratio:1.75; text-align:left}
+
+/* ============================================================
+   AREA ADMIN (/admin) — estetica gestionale, font del brand
+   ============================================================ */
+.lfdt-admin, .lfdt-admin-auth{
+  --ink:#2B2733; --muted:#6B7280; --line:#E5E7EB; --card:#FFFFFF; --bg:#F3F4F6;
+  font-family:'Karla',system-ui,sans-serif; color:var(--ink); background:var(--bg);
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+.lfdt-admin *, .lfdt-admin-auth *{box-sizing:border-box; margin:0}
+.lfdt-admin button, .lfdt-admin-auth button{font:inherit; cursor:pointer; background:none; border:none; color:inherit}
+.lfdt-admin :focus-visible, .lfdt-admin-auth :focus-visible{outline:2px solid #8B5CF6; outline-offset:2px; border-radius:6px}
+
+/* login */
+.lfdt-admin-auth{display:flex; align-items:center; justify-content:center; padding:24px}
+.lfdt-login-card{width:100%; max-width:380px; background:var(--card); border:1px solid var(--line);
+  border-radius:18px; padding:30px; box-shadow:0 18px 44px rgba(31,36,48,.12); text-align:center}
+.lfdt-login-card h1{font-family:'Fraunces',serif; font-weight:560; font-size:24px; margin:14px 0 4px}
+.lfdt-login-sub{font-size:13.5px; color:var(--muted); margin-bottom:18px}
+.lfdt-login-demo{display:flex; flex-direction:column; gap:2px; background:#F3EEFE; border:1px solid #8B5CF622;
+  border-radius:12px; padding:12px 14px; margin-bottom:18px; font-size:13.5px; text-align:left}
+.lfdt-login-demo strong{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#8B5CF6; margin-bottom:4px}
+.lfdt-login-card .lfdt-field{text-align:left}
+.lfdt-login-err{margin-top:12px; font-size:13px; font-weight:700; color:#F43F5E}
+
+/* shell */
+.lfdt-admin{display:flex}
+.lfdt-admin-side{width:230px; flex-shrink:0; background:#fff; border-right:1px solid var(--line);
+  display:flex; flex-direction:column; position:sticky; top:0; height:100vh}
+.lfdt-admin-brand{display:flex; align-items:center; gap:10px; padding:18px 18px 16px; border-bottom:1px solid var(--line)}
+.lfdt-admin-brand strong{display:block; font-family:'Fraunces',serif; font-weight:560; font-size:14.5px; line-height:1.15}
+.lfdt-admin-brand span{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.lfdt-admin-nav{display:flex; flex-direction:column; gap:2px; padding:12px 10px; flex:1}
+.lfdt-admin-navlink{padding:9px 12px; border-radius:9px; font-weight:600; font-size:14px; color:var(--muted); text-decoration:none}
+.lfdt-admin-navlink:hover{background:#F3F4F6; color:var(--ink)}
+.lfdt-admin-navlink.on{background:var(--ink); color:#fff}
+.lfdt-admin-side-foot{padding:14px 18px; font-size:11px; color:var(--muted); border-top:1px solid var(--line)}
+
+.lfdt-admin-main{flex:1; min-width:0; display:flex; flex-direction:column}
+.lfdt-admin-top{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding:14px 26px; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5}
+.lfdt-admin-top-title{font-weight:700; font-size:14px; color:var(--muted)}
+.lfdt-admin-top-right{display:flex; align-items:center; gap:12px}
+.lfdt-admin-role{font-size:11.5px; font-weight:700; letter-spacing:.04em; color:#7C3AED; background:#F3EEFE;
+  border:1px solid #8B5CF622; padding:5px 11px; border-radius:999px}
+.lfdt-admin-avatar{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; flex-shrink:0;
+  background:var(--ink); color:#fff; font-size:12.5px; font-weight:700}
+.lfdt-admin-avatar.big{width:46px; height:46px; font-size:15px}
+.lfdt-admin-link{font-size:13.5px; font-weight:600; color:var(--muted)}
+.lfdt-admin-link:hover{color:var(--ink)}
+.lfdt-admin-content{padding:26px; max-width:1100px}
+
+.lfdt-admin-h1{font-family:'Fraunces',serif; font-weight:560; font-size:26px}
+.lfdt-admin-h2{font-family:'Fraunces',serif; font-weight:560; font-size:19px; margin:6px 0 12px}
+.lfdt-admin-lead{color:var(--muted); font-size:14px; margin:4px 0 22px; line-height:1.5}
+.lfdt-admin-muted{color:var(--muted); font-size:13.5px; line-height:1.5}
+.lfdt-admin-note{margin-top:16px; font-size:12.5px; color:var(--muted)}
+
+/* KPI */
+.lfdt-kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:20px}
+.lfdt-kpi{position:relative; background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 18px 16px}
+.lfdt-kpi-dot{position:absolute; top:18px; right:18px; width:10px; height:10px; border-radius:50%}
+.lfdt-kpi-label{font-size:12.5px; color:var(--muted); font-weight:600}
+.lfdt-kpi-value{font-family:'Fraunces',serif; font-weight:560; font-size:30px; margin:8px 0 2px}
+.lfdt-kpi-hint{font-size:12px; color:var(--muted)}
+
+/* card + charts */
+.lfdt-admin-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px}
+.lfdt-admin-card h2{font-family:'Fraunces',serif; font-weight:560; font-size:17px; margin-bottom:14px}
+.lfdt-admin-charts{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px}
+.lfdt-chart{width:100%}
+.lfdt-chart .recharts-surface{overflow:visible}
+
+/* filtri */
+.lfdt-admin-filters{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-bottom:16px}
+.lfdt-admin-filters label{display:flex; flex-direction:column; gap:5px; font-size:12px; font-weight:700; color:var(--muted)}
+.lfdt-admin-filters select, .lfdt-admin-filters input{font:inherit; font-weight:500; color:var(--ink);
+  padding:8px 12px; border:1.5px solid var(--line); border-radius:9px; background:#fff; min-width:150px}
+.lfdt-admin-filters select:focus, .lfdt-admin-filters input:focus{outline:none; border-color:#8B5CF6}
+.lfdt-admin-count{margin-left:auto; font-size:12.5px; color:var(--muted); font-weight:700; align-self:center}
+
+/* tabelle */
+.lfdt-atable-wrap{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:auto}
+.lfdt-atable{width:100%; border-collapse:collapse; font-size:13.5px}
+.lfdt-atable th{position:sticky; top:0; background:#F9FAFB; text-align:left; font-size:11px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--muted); font-weight:700; padding:11px 14px; border-bottom:1px solid var(--line); white-space:nowrap}
+.lfdt-atable td{padding:11px 14px; border-bottom:1px solid #F1F2F4; vertical-align:middle}
+.lfdt-atable tbody tr:last-child td{border-bottom:none}
+.lfdt-atable tbody tr:hover{background:#FAFAFB}
+.lfdt-atable tr.live{background:#F0FBF4}
+.lfdt-atable tr.live:hover{background:#E7F7ee}
+.lfdt-atable .num{text-align:right}
+.lfdt-atable .mono{font-variant-numeric:tabular-nums; font-weight:700}
+.lfdt-atable-empty{text-align:center; color:var(--muted); padding:28px}
+.lfdt-live-tag{display:inline-block; margin-left:8px; font-size:10.5px; font-weight:700; color:#22A05A;
+  background:#E9F7EF; border-radius:999px; padding:2px 8px; vertical-align:middle}
+.lfdt-live-tag.paid{color:#7C3AED; background:#F3EEFE}
+
+/* pill di stato */
+.lfdt-pill{display:inline-block; font-size:11.5px; font-weight:700; padding:3px 10px; border-radius:999px}
+.lfdt-pill.ok{color:#0F7B43; background:#E4F6EC}
+.lfdt-pill.wait{color:#9A6400; background:#FBF1D8}
+.lfdt-pill.off{color:#B42318; background:#FDE7E4}
+.lfdt-pill.hon{color:#7C3AED; background:#F3EEFE}
+.lfdt-pill.soon{color:#4B5563; background:#EEF0F3}
+
+/* stepper capienza */
+.lfdt-stepper{display:inline-flex; align-items:center; gap:2px; border:1.5px solid var(--line); border-radius:9px; overflow:hidden}
+.lfdt-stepper button{width:28px; height:28px; font-size:16px; font-weight:700; color:var(--muted); line-height:1}
+.lfdt-stepper button:hover{background:#F3F4F6; color:var(--ink)}
+.lfdt-stepper span{min-width:30px; text-align:center; font-weight:700; font-size:13.5px}
+
+/* barra riempimento */
+.lfdt-fillbar{display:inline-block; width:70px; height:6px; border-radius:999px; background:#EEF0F3; overflow:hidden; vertical-align:middle}
+.lfdt-fillbar span{display:block; height:100%; border-radius:999px}
+.lfdt-atable td.num em{font-style:normal; font-size:11.5px; color:var(--muted); margin-left:7px}
+
+/* ruoli */
+.lfdt-account-row{display:flex; align-items:center; gap:14px}
+.lfdt-account-row strong{font-size:15px}
+.lfdt-account-row .lfdt-admin-role{margin-left:auto}
+.lfdt-roles{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px}
+.lfdt-role{background:#fff; border:1px solid var(--line); border-top:3px solid var(--c); border-radius:14px; padding:18px}
+.lfdt-role.on{box-shadow:0 8px 22px rgba(139,92,246,.12)}
+.lfdt-role-head{display:flex; align-items:center; gap:9px; margin-bottom:8px}
+.lfdt-role-head strong{font-family:'Fraunces',serif; font-weight:560; font-size:16.5px; flex:1}
+.lfdt-role-dot{width:10px; height:10px; border-radius:50%; background:var(--c)}
+.lfdt-role-perms{list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:7px}
+.lfdt-role-perms li{position:relative; padding-left:18px; font-size:13px; color:#4B5563; line-height:1.4}
+.lfdt-role-perms li::before{content:"›"; position:absolute; left:4px; color:var(--c); font-weight:700}
+
+/* responsive */
+@media (max-width:820px){
+  .lfdt-admin{flex-direction:column}
+  .lfdt-admin-side{width:auto; height:auto; position:static; flex-direction:row; align-items:center;
+    flex-wrap:wrap; border-right:none; border-bottom:1px solid var(--line)}
+  .lfdt-admin-brand{border-bottom:none; padding:12px 16px}
+  .lfdt-admin-nav{flex-direction:row; flex-wrap:wrap; flex:1; padding:8px}
+  .lfdt-admin-side-foot{display:none}
+  .lfdt-admin-content{padding:18px}
+}
