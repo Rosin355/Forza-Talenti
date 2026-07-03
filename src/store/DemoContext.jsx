@@ -4,14 +4,14 @@ import { pop } from "../lib/confetti";
 import { DemoContext, couponInfo } from "./demoStore";
 
 const KEY = "lfdt-demo-state";
-const VERSION = 1;
+const VERSION = 2;
 const MAX_WEEK = 2;
 
 const DEFAULT_STATE = {
   version: VERSION,
   booked: [4],
   waitlist: [],
-  member: { name: "Aurora Talenti", type: "Socio ordinario", cardNo: "26/142", issued: "15/03/2026", validUntil: "14/03/2027" },
+  member: { name: "Simonetta Vianello", type: "Socio ordinario", cardNo: "26/142", issued: "15/03/2026", validUntil: "14/03/2027" },
   subscription: { planId: "trimestre", planName: "Trimestrale", activeUntil: "31/08/2026" },
   orders: [],
   cart: null,
