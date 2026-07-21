@@ -1,18 +1,18 @@
 const ROLES = [
   {
-    name: "Admin Master", tone: "#8B5CF6", active: true,
-    desc: "Controllo completo del gestionale.",
-    perms: ["Gestione soci e tessere", "Modifica corsi e capienze", "Incassi e report", "Gestione ruoli e permessi"],
+    name: "Admin Master", tone: "#33398F", active: true,
+    desc: "Controllo completo del gestionale del centro.",
+    perms: ["Gestione soci, tessere e crediti", "Agenda, slot e postazioni", "Incassi e report", "Gestione ruoli e permessi"],
   },
   {
-    name: "Collaboratori", tone: "#0EA5B7", active: false,
+    name: "Collaboratori", tone: "#0E9BB5", active: false,
     desc: "Gestione operativa quotidiana, senza area amministrativa.",
-    perms: ["Prenotazioni e liste d'attesa", "Check-in in sala", "Modifica calendario lezioni", "Nessun accesso agli incassi"],
+    perms: ["Sedute e liste d'attesa", "Accoglienza e check-in", "Modifica agenda slot", "Nessun accesso agli incassi"],
   },
   {
-    name: "Staff member", tone: "#F97316", active: false,
-    desc: "Accesso in sola lettura per gli insegnanti.",
-    perms: ["Vista delle proprie lezioni", "Elenco iscritti alla lezione", "Nessuna modifica ai dati", "Nessun accesso ai soci"],
+    name: "Staff member", tone: "#F5920B", active: false,
+    desc: "Accesso in sola lettura per gli operatori PEMF.",
+    perms: ["Vista delle proprie sedute", "Elenco ospiti della giornata", "Nessuna modifica ai dati", "Nessun accesso ai soci"],
   },
 ];
 
@@ -28,7 +28,7 @@ export default function Impostazioni() {
           <div className="lfdt-admin-avatar big" aria-hidden="true">AM</div>
           <div>
             <strong>Staff Demo</strong>
-            <div className="lfdt-admin-muted">admin@lfdt.demo</div>
+            <div className="lfdt-admin-muted">admin@nagomilab.demo</div>
           </div>
           <span className="lfdt-admin-role">Admin Master</span>
         </div>

@@ -10,8 +10,8 @@ import Impostazioni from "./Impostazioni";
 
 const NAV = [
   ["/admin", "Dashboard"],
-  ["/admin/prenotazioni", "Prenotazioni"],
-  ["/admin/corsi", "Corsi"],
+  ["/admin/prenotazioni", "Sedute"],
+  ["/admin/corsi", "Agenda & postazioni"],
   ["/admin/soci", "Soci"],
   ["/admin/impostazioni", "Impostazioni"],
 ];

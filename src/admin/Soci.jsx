@@ -15,7 +15,7 @@ export default function Soci() {
   return (
     <>
       <h1 className="lfdt-admin-h1">Soci</h1>
-      <p className="lfdt-admin-lead">{MEMBERS.length} tesserati. Numero tessera progressivo, tipo e stato abbonamento.</p>
+      <p className="lfdt-admin-lead">{MEMBERS.length} tesserati. Pacchetto attivo, crediti residui e stato.</p>
 
       <div className="lfdt-admin-filters">
         <label>Cerca
@@ -35,7 +35,8 @@ export default function Soci() {
         <table className="lfdt-atable">
           <thead>
             <tr>
-              <th>Tessera</th><th>Socio</th><th>Tipo</th><th>Abbonamento</th><th>Stato</th><th>Scadenza</th>
+              <th>Tessera</th><th>Socio</th><th>Tipo</th><th>Pacchetto attivo</th>
+              <th className="num">Crediti residui</th><th>Stato</th><th>Scadenza</th>
             </tr>
           </thead>
           <tbody>
@@ -45,6 +46,7 @@ export default function Soci() {
                 <td>{m.name}</td>
                 <td>{m.type === "Onorario" ? <span className="lfdt-pill hon">Onorario</span> : "Ordinario"}</td>
                 <td>{m.plan}</td>
+                <td className="num">{m.credits > 0 ? <strong>{m.credits}</strong> : "—"}</td>
                 <td><span className={`lfdt-pill ${statusClass(m.status)}`}>{m.status}</span></td>
                 <td>{m.expiry}</td>
               </tr>

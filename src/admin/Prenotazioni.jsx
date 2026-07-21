@@ -35,8 +35,8 @@ export default function Prenotazioni() {
 
   return (
     <>
-      <h1 className="lfdt-admin-h1">Prenotazioni</h1>
-      <p className="lfdt-admin-lead">Le prenotazioni fatte dal sito compaiono qui in tempo reale.</p>
+      <h1 className="lfdt-admin-h1">Sedute</h1>
+      <p className="lfdt-admin-lead">Le sedute prenotate dal sito compaiono qui in tempo reale.</p>
 
       <div className="lfdt-admin-filters">
         <label>Giorno
@@ -45,9 +45,9 @@ export default function Prenotazioni() {
             {DAYS.map((d) => <option key={d.key} value={d.key}>{d.short} {d.num}</option>)}
           </select>
         </label>
-        <label>Corso
+        <label>Area
           <select value={catF} onChange={(e) => setCatF(e.target.value)}>
-            <option value="all">Tutti</option>
+            <option value="all">Tutte</option>
             {Object.entries(CATS).map(([k, c]) => <option key={k} value={k}>{c.label}</option>)}
           </select>
         </label>
@@ -64,12 +64,12 @@ export default function Prenotazioni() {
         <table className="lfdt-atable">
           <thead>
             <tr>
-              <th>Socio</th><th>Corso</th><th>Lezione</th><th>Quando</th><th>Stato</th>
+              <th>Ospite</th><th>Area</th><th>Operatore</th><th>Quando</th><th>Stato</th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 && (
-              <tr><td colSpan={5} className="lfdt-atable-empty">Nessuna prenotazione con questi filtri.</td></tr>
+              <tr><td colSpan={5} className="lfdt-atable-empty">Nessuna seduta con questi filtri.</td></tr>
             )}
             {filtered.map((r) => {
               const c = CATS[r.lesson.cat];
@@ -81,7 +81,7 @@ export default function Prenotazioni() {
                     {r.live && <span className="lfdt-live-tag">dal sito · live</span>}
                   </td>
                   <td><Badge color={c.color} soft={c.soft}>{c.label}</Badge></td>
-                  <td>{r.lesson.title}</td>
+                  <td>{r.lesson.teacher}</td>
                   <td>{d.short} {d.num} · {r.lesson.time}</td>
                   <td><span className={`lfdt-pill ${statusClass(r.status)}`}>{r.status}</span></td>
                 </tr>
