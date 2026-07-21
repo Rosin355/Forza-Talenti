@@ -1,25 +1,39 @@
-export const LESSONS = [
-  { id: 1, day: 0, time: "07:30", dur: 60, cat: "meditazione", title: "Meditazione del mattino", teacher: "Elena Rigoni", room: "Sala Cerchio", cap: 12, booked: 8 },
-  { id: 16, day: 0, time: "12:30", dur: 45, cat: "mindfulness", title: "Pausa mindful", teacher: "Marco Vidal", room: "Sala Quiete", cap: 10, booked: 6 },
-  { id: 2, day: 0, time: "18:30", dur: 75, cat: "movimento", title: "Movimento consapevole", teacher: "Marco Vidal", room: "Sala Grande", cap: 16, booked: 16 },
-  { id: 3, day: 0, time: "20:00", dur: 90, cat: "crescita", title: "Il coraggio di scegliere · incontro 4/8", teacher: "Sara Bonetti", room: "Sala Cerchio", cap: 14, booked: 9 },
-  { id: 4, day: 1, time: "09:00", dur: 60, cat: "mindfulness", title: "Mindfulness e respiro", teacher: "Elena Rigoni", room: "Sala Quiete", cap: 10, booked: 4 },
-  { id: 5, day: 1, time: "17:00", dur: 60, cat: "kids", title: "Kids Yoga (6–10 anni)", teacher: "Giulia Ferro", room: "Sala Grande", cap: 12, booked: 11 },
-  { id: 6, day: 1, time: "19:00", dur: 75, cat: "cyl", title: "CYLAcademy · Modulo 3: ascolto attivo", teacher: "Andrea Toso", room: "Aula Studio", cap: 20, booked: 13 },
-  { id: 17, day: 1, time: "20:30", dur: 60, cat: "meditazione", title: "Meditazione della sera", teacher: "Elena Rigoni", room: "Sala Cerchio", cap: 12, booked: 7 },
-  { id: 7, day: 2, time: "07:30", dur: 60, cat: "meditazione", title: "Meditazione del mattino", teacher: "Elena Rigoni", room: "Sala Cerchio", cap: 12, booked: 12 },
-  { id: 18, day: 2, time: "17:00", dur: 60, cat: "kids", title: "Kids · Respiro e fantasia (4–6 anni)", teacher: "Giulia Ferro", room: "Sala Quiete", cap: 8, booked: 5 },
-  { id: 8, day: 2, time: "18:30", dur: 90, cat: "workshop", title: "Workshop · Scrittura intuitiva", teacher: "Sara Bonetti", room: "Sala Quiete", cap: 10, booked: 6, price: 25 },
-  { id: 19, day: 2, time: "19:00", dur: 75, cat: "movimento", title: "Movimento e respiro", teacher: "Marco Vidal", room: "Sala Grande", cap: 16, booked: 10 },
-  { id: 9, day: 3, time: "12:30", dur: 45, cat: "mindfulness", title: "Pausa mindful", teacher: "Marco Vidal", room: "Sala Quiete", cap: 10, booked: 3 },
-  { id: 10, day: 3, time: "18:30", dur: 75, cat: "movimento", title: "Movimento consapevole", teacher: "Marco Vidal", room: "Sala Grande", cap: 16, booked: 12 },
-  { id: 20, day: 3, time: "20:00", dur: 90, cat: "crescita", title: "Relazioni che nutrono · incontro 2/6", teacher: "Sara Bonetti", room: "Sala Cerchio", cap: 14, booked: 14 },
-  { id: 11, day: 4, time: "17:00", dur: 60, cat: "kids", title: "Kids · Piccoli esploratori", teacher: "Giulia Ferro", room: "Sala Grande", cap: 12, booked: 7 },
-  { id: 21, day: 4, time: "18:30", dur: 60, cat: "meditazione", title: "Meditazione del tramonto", teacher: "Elena Rigoni", room: "Giardino", cap: 18, booked: 9 },
-  { id: 12, day: 4, time: "19:30", dur: 120, cat: "eventi", title: "Cerchio di luna piena", teacher: "Tutto lo staff", room: "Giardino", cap: 30, booked: 24 },
-  { id: 13, day: 5, time: "10:00", dur: 90, cat: "meditazione", title: "Meditazione profonda", teacher: "Elena Rigoni", room: "Sala Cerchio", cap: 12, booked: 5 },
-  { id: 22, day: 5, time: "11:30", dur: 60, cat: "cyl", title: "CYLAcademy · Laboratorio pratico", teacher: "Andrea Toso", room: "Aula Studio", cap: 20, booked: 8 },
-  { id: 14, day: 5, time: "15:00", dur: 180, cat: "workshop", title: "Stage · Voce e presenza", teacher: "Andrea Toso", room: "Sala Grande", cap: 18, booked: 12, price: 40 },
-  { id: 15, day: 6, time: "09:30", dur: 75, cat: "movimento", title: "Risveglio in movimento", teacher: "Giulia Ferro", room: "Giardino", cap: 20, booked: 6 },
-  { id: 23, day: 6, time: "18:00", dur: 90, cat: "mindfulness", title: "Chiudere la settimana · pratica e tè", teacher: "Elena Rigoni", room: "Sala Quiete", cap: 12, booked: 10 },
-];
+/* Sedute individuali PEMF: slot da 45 min su appuntamento.
+   Il centro ha STATIONS postazioni: ogni slot può ospitare al massimo
+   STATIONS persone in parallelo. `booked` è l'occupazione mock di partenza.
+   Lun–Ven: 9–12 e 15–19 · Sab: solo mattina · Dom: chiuso. */
+export const STATIONS = 2;
+
+const MORNING = ["09:00", "10:00", "11:00"];
+const AFTERNOON = ["15:00", "16:00", "17:00", "18:00"];
+
+/* pattern deterministici per varietà realistica */
+const AREAS = ["benessere", "dolore", "relax", "recupero", "energia"];
+const OPS = ["Marta Serena", "Luca Kimura", "Iris Benetti"];
+const OCC = [1, 0, 2, 1, 0, 1, 2, 0, 1, 1, 0, 2, 1, 0, 0, 1, 2, 1, 0, 1];
+
+function buildSlots() {
+  const slots = [];
+  let id = 1;
+  for (let day = 0; day <= 5; day++) {
+    const times = day === 5 ? MORNING : [...MORNING, ...AFTERNOON];
+    for (const time of times) {
+      const i = id - 1;
+      slots.push({
+        id: id++,
+        day,
+        time,
+        dur: 45,
+        cat: AREAS[i % AREAS.length],
+        title: "Seduta individuale PEMF",
+        teacher: OPS[i % OPS.length],
+        room: "Studio Nagomi",
+        cap: STATIONS,
+        booked: Math.min(OCC[i % OCC.length], STATIONS),
+      });
+    }
+  }
+  return slots;
+}
+
+export const LESSONS = buildSlots();

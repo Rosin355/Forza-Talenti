@@ -15,7 +15,7 @@ const METHOD_LABEL = { carta: "Carta", satispay: "Satispay", sede: "In sede" };
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, member, completeOrder } = useDemo();
+  const { cart, member, credits, completeOrder } = useDemo();
 
   const [step, setStep] = useState(0);
   const [couponCode, setCouponCode] = useState("");
@@ -33,16 +33,15 @@ export default function Checkout() {
       <main>
         <section className="lfdt-section">
           <h2>Checkout</h2>
-          <div className="lfdt-empty">Il carrello è vuoto. Scegli un piano o uno stage per iniziare.</div>
-          <button className="lfdt-btn primary" style={{ marginTop: 14 }} onClick={() => navigate("/piani")}>Vai ai piani</button>
+          <div className="lfdt-empty">Il carrello è vuoto. Scegli un pacchetto per iniziare.</div>
+          <button className="lfdt-btn primary" style={{ marginTop: 14 }} onClick={() => navigate("/piani")}>Vai ai pacchetti</button>
         </section>
       </main>
     );
   }
 
-  const isTessera = cart?.kind === "plan" && cart?.id === "tessera";
   const price = Number(cart?.price) || 0;
-  const rate = couponApplied && !isTessera ? couponInfo(couponCode).rate : 0;
+  const rate = couponApplied ? couponInfo(couponCode).rate : 0;
   const discount = Math.round(price * rate);
   const total = price - discount;
 
@@ -86,11 +85,10 @@ export default function Checkout() {
                 <label htmlFor="ck-coupon">Hai un coupon?</label>
                 <div className="lfdt-coupon-row">
                   <input id="ck-coupon" value={couponCode} onChange={(e) => { setCouponCode(e.target.value); setCouponApplied(false); }}
-                    placeholder="Es. TALENTO10" />
+                    placeholder="Es. NAGOMI10" />
                   <button className="lfdt-btn ghost" onClick={applyCoupon}>Applica</button>
                 </div>
-                {couponApplied && !isTessera && <div className="lfdt-coupon-ok">Coupon {couponInfo(couponCode).code} attivo · −10%</div>}
-                {couponApplied && isTessera && <div className="lfdt-field-hint">Il coupon non è applicabile alla tessera associativa.</div>}
+                {couponApplied && <div className="lfdt-coupon-ok">Coupon {couponInfo(couponCode).code} attivo · −10%</div>}
               </div>
             </div>
             <div className="lfdt-panel lfdt-totals">
@@ -98,7 +96,7 @@ export default function Checkout() {
               {discount > 0 && <div className="lfdt-total-row disc"><span>Sconto</span><span>−€{discount}</span></div>}
               <div className="lfdt-total-row grand"><span>Totale</span><span>€{total}</span></div>
               <button className="lfdt-btn primary full" onClick={() => setStep(1)}>Continua</button>
-              <button className="lfdt-link" style={{ marginTop: 12 }} onClick={() => navigate("/piani")}>← Torna ai piani</button>
+              <button className="lfdt-link" style={{ marginTop: 12 }} onClick={() => navigate("/piani")}>← Torna ai pacchetti</button>
             </div>
           </div>
         )}
@@ -166,8 +164,8 @@ export default function Checkout() {
               {order.method === "carta" ? "Pagamento confermato" :
                order.method === "satispay" ? "Richiesta Satispay inviata" : "Richiesta registrata"}
             </h3>
-            <p className="lfdt-muted">Grazie {name.split(" ")[0]}! {order.issuedTessera
-              ? "La tua tessera è attiva: bentornata nel cerchio."
+            <p className="lfdt-muted">Grazie {name.split(" ")[0]}! {order.credits > 0
+              ? `${order.credits === 1 ? "1 credito aggiunto" : order.credits + " crediti aggiunti"} alla tua tessera: li vedi scalare a ogni prenotazione.`
               : "Trovi il riepilogo qui sotto e nella tua area tessera."}</p>
 
             <div className="lfdt-receipt">
@@ -183,17 +181,17 @@ export default function Checkout() {
               </div>
             </div>
 
-            {order.issuedTessera && (
+            {order.credits > 0 && (
               <div className="lfdt-tessera lfdt-tessera-mini">
                 <div className="lfdt-tessera-arc" aria-hidden="true" />
                 <div className="lfdt-tessera-top">
                   <NagomiOrbit size={38} spin={false} stroke="#FFFFFF" />
-                  <span className="lfdt-tessera-type">{member.type}</span>
+                  <span className="lfdt-tessera-type">Nagomi Lab · Tessera socio</span>
                 </div>
                 <div className="lfdt-tessera-name">{member.name}</div>
                 <div className="lfdt-tessera-meta">
                   <div><span>Tessera n.</span><strong>{member.cardNo}</strong></div>
-                  <div><span>Valida fino</span><strong>{member.validUntil}</strong></div>
+                  <div><span>Crediti</span><strong>{credits}</strong></div>
                 </div>
               </div>
             )}

@@ -6,13 +6,14 @@ import { useDemo } from "../store/demoStore";
 
 export default function DettaglioLezione() {
   const { openLesson: open, closeSheet, booked, waitlist, isFull, spotsLeft,
-    book, cancel, joinWait, startCheckout } = useDemo();
+    book, cancel, joinWait, startCheckout, stations, credits } = useDemo();
   if (!open) return null;
 
   const cat = CATS[open.cat];
   const mine = booked.includes(open.id);
   const paid = open.price != null;
   const when = `${DAYS[open.day].short} ${DAYS[open.day].num} luglio · ${open.time}`;
+  const left = spotsLeft(open);
 
   const buy = () => {
     startCheckout({ kind: "event", id: `event-${open.id}`, lessonId: open.id, name: open.title, price: open.price, sub: when });
@@ -36,25 +37,26 @@ export default function DettaglioLezione() {
         </div>
         <div className="lfdt-spots">
           {paid
-            ? <>Stage a contributo dedicato · <strong>€{open.price}</strong>. La tessera resta necessaria per partecipare.</>
+            ? <>Seduta con contributo dedicato · <strong>€{open.price}</strong>.</>
             : isFull(open)
-              ? <>Posti esauriti · <strong>lista d'attesa attiva</strong>. Se qualcuno disdice, il posto passa al primo in lista.</>
-              : <><strong>{spotsLeft(open)}</strong> posti disponibili su {open.cap}</>}
+              ? <>Postazioni esaurite · <strong>lista d'attesa attiva</strong>. Se qualcuno disdice, il posto passa al primo in lista.</>
+              : <><strong>{left}</strong> {left === 1 ? "postazione libera" : "postazioni libere"} su {stations}
+                 {credits > 0 && <> · verrà usato <strong>1 credito</strong> (ne hai {credits})</>}</>}
         </div>
 
         {mine ? (
-          <ConfirmButton className="lfdt-btn ghost full" question="Disdici questa prenotazione?"
+          <ConfirmButton className="lfdt-btn ghost full" question="Disdici questa seduta?"
             confirmLabel="Sì, disdici" onConfirm={() => { cancel(open); closeSheet(); }}>
-            Disdici prenotazione
+            Disdici la seduta
           </ConfirmButton>
         ) : paid ? (
-          <button className="lfdt-btn primary full" onClick={buy}>Acquista il posto — €{open.price}</button>
+          <button className="lfdt-btn primary full" onClick={buy}>Acquista la seduta — €{open.price}</button>
         ) : isFull(open) ? (
           <button className="lfdt-btn primary full" disabled={waitlist.includes(open.id)} onClick={() => joinWait(open)}>
             {waitlist.includes(open.id) ? "Sei in lista d'attesa" : "Entra in lista d'attesa"}
           </button>
         ) : (
-          <button className="lfdt-btn primary full" onClick={() => book(open)}>Prenota il tuo posto</button>
+          <button className="lfdt-btn primary full" onClick={() => book(open)}>Prenota la seduta</button>
         )}
         <p className="lfdt-rules center">Prenotazioni fino a 12 ore prima · disdetta entro 24 ore</p>
       </div>

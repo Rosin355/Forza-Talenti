@@ -9,6 +9,6 @@ export function useDemo() {
 }
 
 export function couponInfo(code) {
-  if ((code || "").trim().toUpperCase() === "TALENTO10") return { ok: true, rate: 0.1, code: "TALENTO10" };
+  if ((code || "").trim().toUpperCase() === "NAGOMI10") return { ok: true, rate: 0.1, code: "NAGOMI10" };
   return { ok: false, rate: 0, code: (code || "").trim().toUpperCase() };
 }

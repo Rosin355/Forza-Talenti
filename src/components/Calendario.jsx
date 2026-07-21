@@ -6,7 +6,7 @@ import { LESSONS } from "../data/lessons";
 import { useDemo } from "../store/demoStore";
 
 export default function Calendario() {
-  const { day, setDay, catFilter, setCatFilter, weekCount, maxWeek } = useDemo();
+  const { day, setDay, catFilter, setCatFilter, weekCount } = useDemo();
 
   const dayLessons = useMemo(
     () => LESSONS.filter((l) => l.day === day && (catFilter === "all" || l.cat === catFilter))
@@ -18,8 +18,8 @@ export default function Calendario() {
     <main>
       <section className="lfdt-section">
         <div className="lfdt-row-between">
-          <h2>Calendario · 6–12 luglio</h2>
-          <span className="lfdt-quota">{weekCount}/{maxWeek} prenotazioni questa settimana</span>
+          <h2>Disponibilità · 6–12 luglio</h2>
+          {weekCount > 0 && <span className="lfdt-quota">{weekCount} {weekCount === 1 ? "seduta prenotata" : "sedute prenotate"}</span>}
         </div>
         <div className="lfdt-days" role="tablist" aria-label="Giorni della settimana">
           {DAYS.map((d) => (
@@ -30,8 +30,8 @@ export default function Calendario() {
             </button>
           ))}
         </div>
-        <div className="lfdt-filters" aria-label="Filtra per percorso">
-          <button className={`lfdt-chip ${catFilter === "all" ? "on" : ""}`} onClick={() => setCatFilter("all")}>Tutti</button>
+        <div className="lfdt-filters" aria-label="Filtra per area di trattamento">
+          <button className={`lfdt-chip ${catFilter === "all" ? "on" : ""}`} onClick={() => setCatFilter("all")}>Tutte</button>
           {Object.entries(CATS).map(([k, c]) => (
             <button key={k} className={`lfdt-chip ${catFilter === k ? "on" : ""}`}
               style={{ "--c": c.color, "--s": c.soft }} onClick={() => setCatFilter(k)}>
@@ -41,16 +41,18 @@ export default function Calendario() {
         </div>
         <div className="lfdt-lessons">
           {dayLessons.length === 0 && (
-            <div className="lfdt-empty">Nessuna lezione {catFilter !== "all" ? `di ${CATS[catFilter].label} ` : ""}in questo giorno.
-              Prova un altro giorno o togli il filtro.</div>
+            <div className="lfdt-empty">
+              {day === 6 ? "La domenica il centro è chiuso: è il giorno del riposo, anche per le postazioni."
+                : `Nessuna disponibilità ${catFilter !== "all" ? `per ${CATS[catFilter].label} ` : ""}in questo giorno. Prova un altro giorno o togli il filtro.`}
+            </div>
           )}
           {dayLessons.map((l) => (
             <LessonCard key={l.id} l={l} />
           ))}
         </div>
-        <p className="lfdt-rules">Puoi prenotare fino a 2 lezioni a settimana e fino a 12 ore prima dell'inizio.
-          Ti chiediamo di disdire almeno 24 ore prima: così chi è in lista d'attesa entra al posto tuo.
-          Per imprevisti dell'ultimo minuto scrivi allo staff, troviamo una soluzione insieme.</p>
+        <p className="lfdt-rules">Ogni slot dura 45 minuti e ha una postazione per persona. Puoi prenotare fino a
+          12 ore prima dell'inizio; ti chiediamo di disdire almeno 24 ore prima, così chi è in lista d'attesa
+          entra al posto tuo. Se hai crediti attivi, la prenotazione ne usa uno in automatico.</p>
       </section>
     </main>
   );

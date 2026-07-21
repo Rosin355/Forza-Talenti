@@ -1,6 +1,6 @@
 import confetti from "canvas-confetti";
 
-const COLORS = ["#F43F5E", "#F97316", "#FACC15", "#22C55E", "#06B6D4", "#3B82F6", "#8B5CF6", "#D9269B"];
+const COLORS = ["#33398F", "#6366F1", "#F9C206", "#F5920B", "#FFE28A", "#0E9BB5"];
 
 const reduced = () =>
   typeof window !== "undefined" &&

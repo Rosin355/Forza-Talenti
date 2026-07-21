@@ -1,6 +1,12 @@
 export const PLANS = [
-  { id: "tessera", name: "Tessera Societaria", sub: "Socio ordinario · valida 365 giorni", price: "25", per: "/anno", note: "Numerata e obbligatoria per partecipare alle attività. I soci onorari la ricevono gratuitamente." },
-  { id: "mensile", name: "Mensile", sub: "Accesso ai corsi del mese", price: "55", per: "/mese", note: "Ideale per iniziare o per i mesi estivi. Sconti attivi con coupon e convenzioni." },
-  { id: "trimestre", name: "Trimestrale", sub: "3 mesi consecutivi", price: "150", per: "/trim.", note: "Risparmi 15 € rispetto al mensile e mantieni il posto nei corsi a numero chiuso.", hot: true },
-  { id: "semestre", name: "Semestrale", sub: "6 mesi consecutivi", price: "280", per: "/sem.", note: "Il più conveniente per chi pratica con costanza. Include priorità sugli stage." },
+  { id: "conoscitiva", name: "Prima seduta conoscitiva", sub: "45 min · senza impegno", price: "0", per: "",
+    note: "Il punto di partenza per tutti: conosciamo la tua storia, ti mostriamo il dispositivo e definiamo insieme il ciclo. Si prenota dal calendario." },
+  { id: "singola", name: "Seduta singola", sub: "1 credito · 45 min", price: "35", per: "", credits: 1,
+    note: "Per chi vuole provare o ha bisogno di una seduta ogni tanto, senza vincoli." },
+  { id: "c5", name: "Ciclo 5 sedute", sub: "5 crediti · validi 6 mesi", price: "160", per: "", credits: 5,
+    note: "Il formato giusto per un primo ciclo: risparmi 15 € rispetto alle singole." },
+  { id: "c10", name: "Ciclo 10 sedute", sub: "10 crediti · validi 12 mesi", price: "300", per: "", credits: 10, hot: true,
+    note: "Il più scelto: copre un ciclo completo e i richiami, con 50 € di risparmio." },
+  { id: "mensile", name: "Mensile illimitato", sub: "Max 1 seduta al giorno", price: "120", per: "/mese",
+    note: "Per i periodi intensi: tutte le sedute che vuoi, una al giorno, per un mese." },
 ];
