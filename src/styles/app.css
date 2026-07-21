@@ -70,13 +70,13 @@
   background:#23275C; color:#fff; border-radius:22px; padding:clamp(20px,3vw,30px); transition:.2s}
 .lfdt-event:hover{transform:translateY(-2px); box-shadow:0 16px 40px rgba(43,39,51,.3)}
 .lfdt-event-moon{position:absolute; right:-40px; top:50%; transform:translateY(-50%); width:190px; aspect-ratio:1;
-  border-radius:50%; background:radial-gradient(circle at 38% 35%, #FFF7E0, #F5D98B 55%, #C79A3D); opacity:.9;
-  box-shadow:0 0 80px 20px rgba(245,217,139,.35)}
+  border-radius:50%; background:radial-gradient(circle at 38% 35%, #FFE28A, #F9C206 55%, #F5920B); opacity:.92;
+  box-shadow:0 0 80px 20px rgba(249,194,6,.35)}
 .lfdt-event-body{position:relative; max-width:60ch}
 .lfdt-event h3{font-family:'Sora',sans-serif; font-weight:600; font-size:clamp(21px,2.8vw,28px); margin:10px 0 8px}
-.lfdt-event p{color:#CFC9D6; line-height:1.55; font-size:15px}
-.lfdt-event-cta{display:inline-block; margin-top:14px; font-weight:700; color:#FACC15}
-.lfdt-event-cta em{font-style:normal; font-weight:400; color:#CFC9D6}
+.lfdt-event p{color:#C9CCE8; line-height:1.55; font-size:15px}
+.lfdt-event-cta{display:inline-block; margin-top:14px; font-weight:700; color:#F9C206}
+.lfdt-event-cta em{font-style:normal; font-weight:400; color:#C9CCE8}
 @media (max-width:640px){.lfdt-event-moon{opacity:.35}}
 
 /* categorie */
@@ -480,3 +480,23 @@
   .lfdt-admin-side-foot{display:none}
   .lfdt-admin-content{padding:18px}
 }
+
+/* tecnologia */
+.lfdt-tech-hero{display:flex; align-items:center; justify-content:space-between; gap:clamp(20px,4vw,48px); flex-wrap:wrap}
+.lfdt-tech-title{font-family:'Sora',sans-serif; font-weight:600; font-size:clamp(26px,3.6vw,38px); margin:6px 0 12px}
+.lfdt-tech-orbit{flex-shrink:0}
+@media (max-width:640px){.lfdt-tech-orbit{display:none}}
+
+/* faq */
+.lfdt-faq{display:flex; flex-direction:column; gap:10px; max-width:760px}
+.lfdt-faq-item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:0 18px}
+.lfdt-faq-item summary{cursor:pointer; font-weight:700; font-size:15px; padding:15px 0; list-style:none; position:relative; padding-right:30px}
+.lfdt-faq-item summary::-webkit-details-marker{display:none}
+.lfdt-faq-item summary::after{content:"+"; position:absolute; right:2px; top:50%; transform:translateY(-50%);
+  font-size:20px; font-weight:400; color:var(--brand); transition:.18s}
+.lfdt-faq-item[open] summary::after{content:"−"}
+.lfdt-faq-item p{color:var(--muted); font-size:14.5px; line-height:1.6; padding:0 0 16px}
+
+/* disclaimer */
+.lfdt-disclaimer{background:#fff; border:1.5px solid var(--line); border-left:4px solid var(--gold);
+  border-radius:14px; padding:15px 18px; font-size:13.5px; color:var(--muted); line-height:1.55; max-width:760px}

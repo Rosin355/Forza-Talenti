@@ -7,11 +7,12 @@ export default function Percorsi() {
   return (
     <main>
       <section className="lfdt-section">
-        <div className="lfdt-eyebrow">Otto colori, un solo cerchio</div>
-        <h2>I percorsi dell'associazione</h2>
+        <div className="lfdt-eyebrow">Cinque aree, un unico metodo</div>
+        <h2>Le aree di trattamento</h2>
         <p className="lfdt-muted" style={{ maxWidth: "62ch" }}>
-          Ogni percorso ha il suo colore, lo stesso che ritrovi nel calendario: impari a orientarti a colpo d'occhio.
-          Puoi frequentare un solo percorso o comporre la tua settimana mescolandoli.
+          La tecnologia è la stessa — campi elettromagnetici pulsati, calibrati sulle risposte naturali
+          delle cellule — ma ogni area ha programmi, frequenze e obiettivi propri.
+          Nella seduta conoscitiva gratuita capiamo insieme da dove partire.
         </p>
         <div className="lfdt-courses">
           {Object.entries(CATS).map(([k, c]) => (
@@ -21,7 +22,7 @@ export default function Percorsi() {
                 <h3>{c.label}</h3>
               </div>
               <p>{c.desc}</p>
-              <button className="lfdt-link" onClick={() => navigate(`/percorsi/${k}`)}>Scopri il percorso →</button>
+              <button className="lfdt-link" onClick={() => navigate(`/percorsi/${k}`)}>Scopri l'area →</button>
             </div>
           ))}
         </div>
@@ -41,8 +42,8 @@ export default function Percorsi() {
             </div>
           ))}
         </div>
-        <p className="lfdt-rules">Vuoi entrare a far parte dello staff o proporre una collaborazione?
-          L'associazione è aperta a convenzioni con altre realtà del territorio.</p>
+        <p className="lfdt-rules">Le sedute PEMF sono trattamenti di benessere e non sostituiscono diagnosi
+          o terapie mediche. In presenza di pacemaker, gravidanza o patologie, consulta prima il tuo medico.</p>
       </section>
     </main>
   );

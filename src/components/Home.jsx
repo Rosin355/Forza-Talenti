@@ -10,60 +10,61 @@ import { useDemo } from "../store/demoStore";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { goCal, openSheet, say } = useDemo();
+  const { goCal, say } = useDemo();
   const [stars, setStars] = useState(0);
   const [surveySent, setSurveySent] = useState(false);
-  const fullMoon = LESSONS.find((l) => l.id === 12);
 
   const sendSurvey = () => {
     if (!stars) { say("Scegli da 1 a 5 stelle per inviare la tua valutazione."); return; }
     setSurveySent(true);
-    say("Grazie! La tua opinione aiuta tutto il cerchio a migliorare.");
+    say("Grazie! La tua opinione ci aiuta a rendere il centro migliore.");
   };
+
+  const nextSlots = LESSONS.slice(0, 3);
 
   return (
     <main>
       <Hero onCalendario={() => goCal()} onPiani={() => navigate("/piani")} />
 
-      {/* come funziona */}
+      {/* i 3 passi Nagomi */}
       <section className="lfdt-section">
         <h2>Come funziona</h2>
         <div className="lfdt-steps">
           <div className="lfdt-step">
-            <div className="lfdt-step-ico" style={{ background: "#F3EEFE", color: "#8B5CF6" }}>❋</div>
-            <h3>Diventi socio</h3>
-            <p>Attivi la tessera annuale numerata: vale 365 giorni dal giorno dell'emissione, in qualunque momento tu ti iscriva.</p>
+            <div className="lfdt-step-ico" style={{ background: "#EDEEF9", color: "#33398F" }}>❋</div>
+            <h3>Prenoti la conoscitiva</h3>
+            <p>La prima seduta è gratuita: conosciamo la tua storia, ti mostriamo il dispositivo e rispondiamo a ogni domanda.</p>
           </div>
           <div className="lfdt-step">
-            <div className="lfdt-step-ico" style={{ background: "#E6F7F9", color: "#0EA5B7" }}>◷</div>
-            <h3>Prenoti la lezione</h3>
-            <p>Dal calendario scegli giorno e corso, fino a 12 ore prima dell'inizio. Se i posti sono finiti, entri in lista d'attesa.</p>
+            <div className="lfdt-step-ico" style={{ background: "#FEF9E1", color: "#B87400" }}>◷</div>
+            <h3>Definiamo il tuo ciclo</h3>
+            <p>Area di trattamento, frequenza e numero di sedute: costruiamo insieme un percorso realistico, che si adatta strada facendo.</p>
           </div>
           <div className="lfdt-step">
-            <div className="lfdt-step-ico" style={{ background: "#FEF1E7", color: "#F97316" }}>✦</div>
-            <h3>Partecipi (o disdici)</h3>
-            <p>Ti aspettiamo in sala. Se hai un imprevisto, disdici entro 24 ore: il tuo posto passa a chi è in attesa.</p>
+            <div className="lfdt-step-ico" style={{ background: "#E6F6F9", color: "#0E9BB5" }}>✦</div>
+            <h3>Ti rilassi, il campo lavora</h3>
+            <p>Ti sdrai vestito sul lettino, 30–45 minuti di quiete. Al resto pensano gli impulsi, calibrati sui ritmi delle tue cellule.</p>
           </div>
         </div>
       </section>
 
-      {/* evento in evidenza */}
+      {/* open day in evidenza */}
       <section className="lfdt-section">
         <div className="lfdt-event" role="button" tabIndex={0}
-          onClick={() => openSheet(fullMoon)} onKeyDown={(e) => e.key === "Enter" && openSheet(fullMoon)}>
+          onClick={() => goCal()} onKeyDown={(e) => e.key === "Enter" && goCal()}>
           <div className="lfdt-event-moon" aria-hidden="true" />
           <div className="lfdt-event-body">
-            <Badge color="#F43F5E" soft="#3d2430">Evento della settimana</Badge>
-            <h3>Cerchio di luna piena</h3>
-            <p>Venerdì 10 luglio · ore 19:30 · in giardino. Meditazione collettiva, condivisione e tisana sotto la luna.
-               Aperto a soci e accompagnatori.</p>
-            <span className="lfdt-event-cta">Prenota il tuo posto → <em>{fullMoon.cap - fullMoon.booked} rimasti</em></span>
+            <Badge color="#F9B411" soft="#3a3620">Open day Nagomi Lab</Badge>
+            <h3>Prova la tecnologia PEMF</h3>
+            <p>Sabato 11 luglio · dalle 10:00 alle 18:00. Mini-sedute di prova gratuite di 20 minuti,
+               visita del centro e tè con gli operatori. Porta chi vuoi: l'armonia si condivide.</p>
+            <span className="lfdt-event-cta">Prenota il tuo posto → <em>posti limitati</em></span>
           </div>
         </div>
       </section>
 
       <section className="lfdt-section">
-        <h2>I nostri percorsi</h2>
+        <h2>Le aree di trattamento</h2>
         <div className="lfdt-cats">
           {Object.entries(CATS).map(([k, c]) => (
             <button key={k} className="lfdt-cat" style={{ "--c": c.color, "--s": c.soft }}
@@ -75,13 +76,13 @@ export default function Home() {
           ))}
         </div>
         <button className="lfdt-link" style={{ marginTop: 14 }} onClick={() => navigate("/percorsi")}>
-          Leggi le descrizioni dei percorsi e conosci gli insegnanti →
+          Scopri le aree di trattamento e chi ti accompagna →
         </button>
       </section>
 
       {/* testimonianze */}
       <section className="lfdt-section">
-        <h2>Voci dal cerchio</h2>
+        <h2>Voci dal centro</h2>
         <div className="lfdt-quotes">
           {QUOTES.map((q, i) => (
             <figure key={i} className="lfdt-quote">
@@ -97,7 +98,7 @@ export default function Home() {
         <div className="lfdt-survey">
           {!surveySent ? (
             <>
-              <h2>Com'è andata la tua ultima lezione?</h2>
+              <h2>Com'è andata la tua ultima seduta?</h2>
               <p className="lfdt-muted">Bastano due secondi: la tua valutazione arriva direttamente allo staff.</p>
               <div className="lfdt-stars" role="radiogroup" aria-label="Valutazione da 1 a 5 stelle">
                 {[1, 2, 3, 4, 5].map((n) => (
@@ -110,7 +111,7 @@ export default function Home() {
           ) : (
             <>
               <h2>Grazie di cuore 🙏</h2>
-              <p className="lfdt-muted">La tua valutazione è arrivata allo staff. Ogni voce rende il cerchio più forte.</p>
+              <p className="lfdt-muted">La tua valutazione è arrivata allo staff. Ogni voce rende Nagomi Lab migliore.</p>
             </>
           )}
         </div>
@@ -118,11 +119,11 @@ export default function Home() {
 
       <section className="lfdt-section">
         <div className="lfdt-row-between">
-          <h2>In programma questa settimana</h2>
-          <button className="lfdt-link" onClick={() => goCal()}>Tutto il calendario →</button>
+          <h2>Prossime disponibilità</h2>
+          <button className="lfdt-link" onClick={() => goCal()}>Tutte le disponibilità →</button>
         </div>
         <div className="lfdt-lessons">
-          {[LESSONS.find(l => l.id === 12), LESSONS.find(l => l.id === 14), LESSONS.find(l => l.id === 7)].map((l) => (
+          {nextSlots.map((l) => (
             <LessonCard key={l.id} l={l} />
           ))}
         </div>

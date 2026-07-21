@@ -1,12 +1,9 @@
+/* Gli operatori del centro (dati finti). */
 export const TEACHERS = [
-  { id: "elena", name: "Elena Rigoni", role: "Meditazione · Mindfulness", initial: "ER", color: "#8B5CF6",
-    bio: "Pratica da vent'anni e insegna da dodici. Le sue sedute del mattino sono il rito con cui molti soci aprono la giornata." },
-  { id: "marco", name: "Marco Vidal", role: "Movimento · Respiro", initial: "MV", color: "#F97316",
-    bio: "Chinesiologo, unisce movimento consapevole e lavoro sul respiro. Il suo motto: il corpo arriva dove la mente si rilassa." },
-  { id: "sara", name: "Sara Bonetti", role: "Crescita personale", initial: "SB", color: "#D9269B",
-    bio: "Counselor e facilitatrice di gruppi. Conduce i percorsi tematici e i workshop di scrittura intuitiva." },
-  { id: "giulia", name: "Giulia Ferro", role: "Kids · Movimento", initial: "GF", color: "#D9A400",
-    bio: "Educatrice e insegnante di yoga per l'infanzia. Con lei i bambini imparano a respirare giocando." },
-  { id: "andrea", name: "Andrea Toso", role: "CYLAcademy · Voce", initial: "AT", color: "#3B82F6",
-    bio: "Formatore e coach vocale, coordina i moduli della CYLAcademy e gli stage di voce e presenza." },
+  { id: "marta", name: "Marta Serena", role: "Operatrice PEMF · Naturopata", initial: "MS", color: "#33398F",
+    bio: "Naturopata e operatrice PEMF certificata, ha portato a Nagomi Lab l'attenzione all'ascolto: ogni ciclo parte dalla storia della persona, non dal dispositivo." },
+  { id: "luca", name: "Luca Kimura", role: "Operatore PEMF · Chinesiologo", initial: "LK", color: "#F5920B",
+    bio: "Chinesiologo con anni di lavoro accanto agli sportivi, segue le aree dolore e recupero. Il suo motto: il corpo sa già come fare, va solo sostenuto." },
+  { id: "iris", name: "Iris Benetti", role: "Programmi benessere · Accoglienza", initial: "IB", color: "#0E9BB5",
+    bio: "Cura i programmi relax e l'accoglienza del centro. Con lei la seduta inizia dalla porta: tè caldo, voce bassa e nessuna fretta." },
 ];

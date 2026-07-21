@@ -20,19 +20,19 @@ export default function PercorsoDettaglio() {
   const [lead, ...paragraphs] = cat.long;
 
   const info = [
-    { label: "A chi è adatto", value: cat.forWho },
+    { label: "A chi è adatta", value: cat.forWho },
     { label: "Cosa portare", value: cat.bring },
-    { label: "Livello", value: cat.level },
-    { label: "Durata tipica", value: cat.duration },
+    { label: "Indicata per", value: cat.level },
+    { label: "Durata seduta", value: cat.duration },
   ];
 
   return (
     <main style={{ "--c": cat.color, "--s": cat.soft }}>
       <section className="lfdt-section">
         <div className="lfdt-phero">
-          {hero && <img className="lfdt-phero-img" src={hero} alt={`Percorso ${cat.label}`} />}
+          {hero && <img className="lfdt-phero-img" src={hero} alt={`Area di trattamento ${cat.label}`} />}
           <div className="lfdt-phero-overlay">
-            <div className="lfdt-phero-eyebrow">Percorso</div>
+            <div className="lfdt-phero-eyebrow">Area di trattamento</div>
             <h1>{cat.label}</h1>
             <div className="lfdt-phero-meta">{cat.level} · {cat.duration}</div>
           </div>
@@ -77,12 +77,12 @@ export default function PercorsoDettaglio() {
 
       <section className="lfdt-section">
         <div className="lfdt-row-between">
-          <h2>Prossime lezioni di questo percorso</h2>
+          <h2>Prossime disponibilità in quest'area</h2>
           <button className="lfdt-link" onClick={() => goCal(slug)}>Vedi nel calendario →</button>
         </div>
         <div className="lfdt-lessons">
           {lessons.length === 0 && (
-            <div className="lfdt-empty">Nessuna lezione di {cat.label} in programma questa settimana.</div>
+            <div className="lfdt-empty">Nessuna disponibilità per {cat.label} questa settimana.</div>
           )}
           {lessons.map((l) => (
             <LessonCard key={l.id} l={l} />
@@ -93,10 +93,10 @@ export default function PercorsoDettaglio() {
       <section className="lfdt-section">
         <div className="lfdt-cta">
           <div>
-            <h3>Pronto a iniziare?</h3>
-            <p>La prima lezione di prova è gratuita. Attiva la tessera e prenota il tuo posto nel cerchio.</p>
+            <h3>Inizia dalla seduta conoscitiva</h3>
+            <p>È gratuita e senza impegno: conosciamo la tua storia e definiamo insieme il ciclo più adatto. I pacchetti li scegli solo dopo.</p>
           </div>
-          <button className="lfdt-btn primary" onClick={() => navigate("/piani")}>Scopri i piani</button>
+          <button className="lfdt-btn primary" onClick={() => navigate("/piani")}>Vedi i pacchetti</button>
         </div>
       </section>
     </main>
