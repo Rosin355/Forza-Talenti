@@ -16,9 +16,9 @@ import "./styles/app.css";
 const Admin = lazy(() => import("./admin/Admin"));
 
 /* ============================================================
-   LA FORZA DEI TALENTI — demo web app (mockup, dati finti)
-   Stato globale (prenotazioni, tessera, abbonamento, carrello,
-   login admin) in DemoContext. Sito pubblico + area /admin.
+   NAGOMI LAB — demo centro PEMF (mockup, dati finti)
+   Stato globale (sedute, crediti, tessera, carrello, login admin)
+   in DemoContext. Sito pubblico + area /admin.
    ============================================================ */
 
 export default function App() {

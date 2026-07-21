@@ -1,8 +1,14 @@
-# La Forza Dei Talenti — demo
+# Nagomi Lab — demo centro PEMF
 
-Demo web app (mockup, dati finti) per l'associazione **La Forza Dei Talenti**: calendario lezioni con prenotazioni e lista d'attesa, percorsi e insegnanti, tessera socio digitale, piani e abbonamenti.
+Demo web app (dati finti, nessun backend) per **Nagomi Lab — Campi Elettromagnetici Pulsati**:
+prenotazione di sedute individuali PEMF con crediti a pacchetto, tessera socio digitale,
+checkout demo con pagamento finto e area gestionale (`/admin`, credenziali demo mostrate in pagina).
 
-Costruita con React + Vite. Il deploy su Netlify è configurato tramite `netlify.toml` (build `npm run build`, publish `dist/`).
+Le sedute PEMF descritte nella demo sono trattamenti di benessere e non sostituiscono
+diagnosi o terapie mediche.
+
+Costruita con React + Vite (react-router-dom, canvas-confetti, recharts).
+Deploy su Netlify configurato via `netlify.toml` (build `npm run build`, publish `dist/`).
 
 ## Avvio locale
 
@@ -13,7 +19,11 @@ npm run dev
 
 ## Struttura
 
-- `src/App.jsx` — stato dell'app e viste Home/Calendario
-- `src/components/` — componenti UI (Header, Hero, LessonCard, DettaglioLezione, Tessera, Piani, Percorsi, Footer…)
-- `src/data/mockData.js` — dati mock (lezioni, insegnanti, piani, testimonianze)
-- `src/styles/lfdt.css` — stili dell'app
+- `src/App.jsx` — rotte pubbliche + area admin (lazy)
+- `src/components/` — componenti UI del sito pubblico
+- `src/admin/` — gestionale demo (login finto, dashboard, sedute, agenda, soci)
+- `src/data/` — dati mock (aree, slot sedute, pacchetti, operatori, soci)
+- `src/store/` — stato globale persistito in localStorage (`nagomi-demo-state`)
+- `src/styles/app.css` — stili (design system Nagomi: Sora + Karla, blu #33398F, oro)
+
+Il pulsante "Reset demo" nel footer riporta la demo allo stato iniziale.
