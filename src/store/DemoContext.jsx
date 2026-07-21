@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { pop } from "../lib/confetti";
 import { DemoContext, couponInfo } from "./demoStore";
 
-const KEY = "lfdt-demo-state";
+const KEY = "nagomi-demo-state";
 const VERSION = 2;
 const MAX_WEEK = 2;
 
@@ -138,7 +138,7 @@ export function DemoProvider({ children }) {
   };
 
   const login = (email, pwd) => {
-    const ok = email.trim().toLowerCase() === "admin@lfdt.demo" && pwd === "demo2026";
+    const ok = email.trim().toLowerCase() === "admin@nagomilab.demo" && pwd === "demo2026";
     if (ok) setAdminAuthed(true);
     return ok;
   };

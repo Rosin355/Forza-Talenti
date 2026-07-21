@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import TalentRing from "./TalentRing";
+import NagomiOrbit from "./NagomiOrbit";
 import ConfirmButton from "./ConfirmButton";
 import { CATS } from "../data/cats";
 import { DAYS } from "../data/days";
@@ -20,7 +20,7 @@ export default function Tessera() {
           <div className="lfdt-tessera">
             <div className="lfdt-tessera-arc" aria-hidden="true" />
             <div className="lfdt-tessera-top">
-              <TalentRing size={44} spin={false} />
+              <NagomiOrbit size={44} spin={false} stroke="#FFFFFF" />
               <span className="lfdt-tessera-type">{member.type}</span>
             </div>
             <div className="lfdt-tessera-name">{member.name}</div>

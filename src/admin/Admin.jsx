@@ -26,9 +26,9 @@ export default function Admin() {
     <div className="lfdt-admin">
       <aside className="lfdt-admin-side">
         <div className="lfdt-admin-brand">
-          <img src={logo} alt="" className="lfdt-logo" width={30} height={30} />
+          <img src={logo} alt="" className="lfdt-logo" height={30} />
           <div>
-            <strong>La Forza Dei Talenti</strong>
+            <strong>Nagomi Lab</strong>
             <span>Gestionale</span>
           </div>
         </div>

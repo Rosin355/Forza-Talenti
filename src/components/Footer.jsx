@@ -9,24 +9,22 @@ export default function Footer() {
     <footer className="lfdt-footer">
       <div className="lfdt-footer-top">
         <div className="lfdt-brand">
-          <img src={logo} alt="La Forza Dei Talenti" className="lfdt-logo" width={34} height={34} />
-          <div>
-            <div className="lfdt-brandname">La Forza Dei Talenti</div>
-            <div className="lfdt-brandsub">APS · Benessere e crescita</div>
-          </div>
+          <img src={logo} alt="Nagomi Lab — Campi Elettromagnetici Pulsati"
+            className="lfdt-logo" height={44} />
         </div>
         <div className="lfdt-footer-cols">
           <div>
             <strong>Esplora</strong>
-            <button className="lfdt-flink" onClick={() => navigate("/percorsi")}>Percorsi</button>
-            <button className="lfdt-flink" onClick={() => goCal()}>Calendario</button>
-            <button className="lfdt-flink" onClick={() => navigate("/piani")}>Tessere e piani</button>
+            <button className="lfdt-flink" onClick={() => navigate("/percorsi")}>Trattamenti</button>
+            <button className="lfdt-flink" onClick={() => navigate("/tecnologia")}>La tecnologia</button>
+            <button className="lfdt-flink" onClick={() => goCal()}>Prenota una seduta</button>
+            <button className="lfdt-flink" onClick={() => navigate("/piani")}>Pacchetti</button>
           </div>
           <div>
-            <strong>Associazione</strong>
-            <button className="lfdt-flink" onClick={() => navigate("/percorsi")}>Lo staff</button>
+            <strong>Il centro</strong>
+            <button className="lfdt-flink" onClick={() => navigate("/percorsi")}>Gli operatori</button>
+            <button className="lfdt-flink" onClick={() => say("Demo: sezione in arrivo nella versione finale.")}>Dove siamo</button>
             <button className="lfdt-flink" onClick={() => say("Demo: sezione in arrivo nella versione finale.")}>Collaborazioni</button>
-            <button className="lfdt-flink" onClick={() => say("Demo: sezione in arrivo nella versione finale.")}>Foto e archivio</button>
           </div>
           <div>
             <strong>Info</strong>
@@ -36,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="lfdt-footer-bottom">
-        <span>© 2026 La Forza Dei Talenti APS · demo non collegata a dati reali</span>
+        <span>© 2026 Nagomi Lab · demo dimostrativa, dati non reali</span>
         <button className="lfdt-reset" onClick={resetDemo}
           aria-label="Reimposta la demo ai valori iniziali" title="Reset demo">Reset demo</button>
       </div>

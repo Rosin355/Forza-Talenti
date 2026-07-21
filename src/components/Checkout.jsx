@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TalentRing from "./TalentRing";
+import NagomiOrbit from "./NagomiOrbit";
 import CardForm from "./CardForm";
 import { useDemo, couponInfo } from "../store/demoStore";
 import { celebrate } from "../lib/confetti";
@@ -187,7 +187,7 @@ export default function Checkout() {
               <div className="lfdt-tessera lfdt-tessera-mini">
                 <div className="lfdt-tessera-arc" aria-hidden="true" />
                 <div className="lfdt-tessera-top">
-                  <TalentRing size={38} spin={false} />
+                  <NagomiOrbit size={38} spin={false} stroke="#FFFFFF" />
                   <span className="lfdt-tessera-type">{member.type}</span>
                 </div>
                 <div className="lfdt-tessera-name">{member.name}</div>

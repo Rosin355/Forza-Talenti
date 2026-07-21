@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Percorsi from "./components/Percorsi";
 import PercorsoDettaglio from "./components/PercorsoDettaglio";
 import Calendario from "./components/Calendario";
+import Tecnologia from "./components/Tecnologia";
 import Tessera from "./components/Tessera";
 import Piani from "./components/Piani";
 import Checkout from "./components/Checkout";
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/percorsi" element={<Percorsi />} />
         <Route path="/percorsi/:slug" element={<PercorsoDettaglio />} />
         <Route path="/calendario" element={<Calendario />} />
+        <Route path="/tecnologia" element={<Tecnologia />} />
         <Route path="/tessera" element={<Tessera />} />
         <Route path="/piani" element={<Piani />} />
         <Route path="/checkout" element={<Checkout />} />

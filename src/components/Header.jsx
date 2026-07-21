@@ -3,10 +3,11 @@ import logo from "../assets/logo.png";
 
 const NAV = [
   ["/", "Home"],
-  ["/percorsi", "Percorsi"],
-  ["/calendario", "Calendario"],
+  ["/percorsi", "Trattamenti"],
+  ["/tecnologia", "Tecnologia"],
+  ["/calendario", "Prenota"],
   ["/tessera", "Tessera"],
-  ["/piani", "Piani"],
+  ["/piani", "Pacchetti"],
 ];
 
 export default function Header() {
@@ -15,11 +16,8 @@ export default function Header() {
     <header className="lfdt-header">
       <div className="lfdt-brand" onClick={() => navigate("/")} role="button" tabIndex={0}
         onKeyDown={(e) => e.key === "Enter" && navigate("/")}>
-        <img src={logo} alt="La Forza Dei Talenti" className="lfdt-logo" width={40} height={40} />
-        <div>
-          <div className="lfdt-brandname">La Forza Dei Talenti</div>
-          <div className="lfdt-brandsub">Associazione · Benessere e crescita</div>
-        </div>
+        <img src={logo} alt="Nagomi Lab — Campi Elettromagnetici Pulsati"
+          className="lfdt-logo" height={48} />
       </div>
       <nav className="lfdt-nav" aria-label="Navigazione principale">
         {NAV.map(([to, lab]) => (

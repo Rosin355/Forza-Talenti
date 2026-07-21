@@ -6,7 +6,7 @@ import logo from "../assets/logo.png";
 export default function AdminLogin() {
   const { login } = useDemo();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("admin@lfdt.demo");
+  const [email, setEmail] = useState("admin@nagomilab.demo");
   const [pwd, setPwd] = useState("demo2026");
   const [err, setErr] = useState("");
 
@@ -18,13 +18,14 @@ export default function AdminLogin() {
   return (
     <div className="lfdt-admin-auth">
       <form className="lfdt-login-card" onSubmit={submit}>
-        <img src={logo} alt="La Forza Dei Talenti" className="lfdt-logo" width={40} height={40} />
+        <img src={logo} alt="Nagomi Lab — Campi Elettromagnetici Pulsati" className="lfdt-logo" height={44}
+          style={{ margin: "0 auto" }} />
         <h1>Area gestionale</h1>
         <p className="lfdt-login-sub">Accesso riservato allo staff · ambiente demo</p>
 
         <div className="lfdt-login-demo" role="note">
           <strong>Credenziali demo</strong>
-          <span>admin@lfdt.demo</span>
+          <span>admin@nagomilab.demo</span>
           <span>demo2026</span>
         </div>
 
